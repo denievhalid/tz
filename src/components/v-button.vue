@@ -1,11 +1,6 @@
 <template>
-  <v-button
-    @click="clickHandler"
-    title="Title Big mob"
-    label="Label mob"
-    :icon="icon"
-  >
-    <template #icon>
+  <button class="v-button" @click="clickHandler">
+    <span class="flex align-items-center">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="36"
@@ -20,15 +15,61 @@
           fill="white"
         />
       </svg>
-    </template>
-  </v-button>
+      <span class="v-button__title">{{ props.title }}</span>
+    </span>
+    <span>
+      <span class="v-button__label" v-if="label">{{ label }}</span>
+    </span>
+  </button>
 </template>
 
 <script setup>
-import VButton from "./components/v-button";
-import Icon from "./icon.svg";
+const props = defineProps({
+  icon: String,
+  label: String,
+  title: String,
+});
 
-const clickHandler = () => {
-  alert();
-};
+const emits = defineEmits(["click"]);
+
+const clickHandler = () => emits("click");
 </script>
+
+<style scoped>
+.v-button {
+  border: none;
+  outline: none;
+  background: linear-gradient(90deg, #e81f2f 0%, #ff8983 100%);
+  border-radius: 20px;
+  width: 100%;
+  height: 50px;
+  max-width: 450px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  cursor: pointer;
+}
+.v-button__label {
+  height: 36px;
+  padding: 8px 16px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e81f2f;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  max-width: 100px;
+  width: 100%;
+}
+.v-button__title {
+  margin-left: 12px;
+}
+</style>
