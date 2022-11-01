@@ -25,7 +25,6 @@
 
 <script setup>
 const props = defineProps({
-  icon: String,
   label: String,
   title: String,
 });
