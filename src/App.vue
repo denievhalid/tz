@@ -1,10 +1,5 @@
 <template>
-  <v-button
-    @click="clickHandler"
-    title="Title Big mob"
-    label="Label mob"
-    :icon="icon"
-  >
+  <v-button @click="clickHandler" title="Title Big mob" label="Label mob">
     <template #icon>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +21,6 @@
 
 <script setup>
 import VButton from "./components/v-button";
-import Icon from "./icon.svg";
 
 const clickHandler = () => {
   alert();
